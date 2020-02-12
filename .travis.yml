@@ -8,3 +8,15 @@ before_install:
 script:
     - docker run -e CI=true pranavbapat/docker-react npm run test
 
+deploy:
+    provider: elasticbeanstalk
+    region: "us-east-1"
+    app: "docker"
+    env: "Docker-env"
+    bucket_name: "elasticbeanstalk-us-east-1-442522994556"
+    bucket_path: "docker"
+    on:
+        branch: master
+    access_key_id: $access_key_id
+    secret_access_key: 
+        secure: $secret_access_key
